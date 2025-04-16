@@ -1,308 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moodore - Products</title>
     <link
       rel="icon"
       href="../assets/image/logo-brand.png"
       type="image/x-icon"
     />
-
-    <title>Moodore</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="stylesheet" href="../assets/css/styles-products.css" />
   </head>
-
   <body>
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">
-      <i class="fas fa-check-circle"></i>
-      <span id="toast-message">Item added to cart!</span>
+    <header>
+      <h1>Produk Terbaik untuk Anda</h1>
+      <p>
+        Temukan produk berkualitas dengan harga terbaik, dijamin asli dan
+        terpercaya
+      </p>
+    </header>
+
+    <div class="container">
+      <div class="filter-bar">
+        <div class="search-box">
+          <input type="text" placeholder="Cari produk..." id="searchInput" />
+        </div>
+        <div class="filter-options">
+          <select id="categoryFilter">
+            <option value="all">Semua Kategori</option>
+            <option value="electronics">Elektronik</option>
+            <option value="fashion">Fashion</option>
+            <option value="health">Kesehatan</option>
+            <option value="home">Rumah Tangga</option>
+          </select>
+          <select id="sortFilter">
+            <option value="popular">Paling Populer</option>
+            <option value="newest">Terbaru</option>
+            <option value="price-low">Harga: Rendah ke Tinggi</option>
+            <option value="price-high">Harga: Tinggi ke Rendah</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsContainer">
+        <!-- Product cards will be loaded here by JavaScript -->
+      </div>
+
+      <div class="pagination" id="pagination">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>></button>
+      </div>
     </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-      <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <!-- Include Header -->
-    <!-- Replace this with a server-side include or JavaScript-based dynamic loading -->
-    <div id="header-placeholder">
-      <header>
-        <div class="container nav-container">
-          <a href="#" class="logo">
-            <img src="../assets/image/logo-brand.png" alt="logo" /> Moodore
-          </a>
-
-          <div class="search-container">
-            <form class="search-form">
-              <input
-                type="text"
-                class="search-input"
-                placeholder="Search products..."
-              />
-              <button type="submit" class="search-button">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
-
-          <ul class="nav-menu" id="navMenu">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="#home">Products</a></li>
-            <li><a href="#features">Kategori</a></li>
-            <li><a href="#testimonials">Fashion</a></li>
-          </ul>
-
-          <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
-          </div>
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="product-detail" id="productDetail">
+          <!-- Product detail will be loaded here by JavaScript -->
         </div>
-      </header>
+      </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="container">
-        <h1>Turn Your Influence Into Income</h1>
-        <p>
-          Join thousands of successful affiliates who are earning passive income
-          by promoting high-quality products they love
-        </p>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-title">
-          <h2>Why Choose Us</h2>
-          <p>
-            Join our affiliate program and enjoy these exclusive benefits that
-            set us apart from the competition
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-percentage"></i>
-            </div>
-            <h3>High Commission Rates</h3>
-            <p>
-              Earn up to 50% commission on every sale you generate through your
-              unique affiliate links
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-money-bill-wave"></i>
-            </div>
-            <h3>Fast Payouts</h3>
-            <p>
-              Get paid quickly and reliably with our bi-weekly payment schedule
-              via PayPal, bank transfer, or crypto
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3>Real-time Analytics</h3>
-            <p>
-              Track your performance with our comprehensive dashboard showing
-              clicks, conversions, and earnings
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-tools"></i>
-            </div>
-            <h3>Marketing Tools</h3>
-            <p>
-              Access banners, email templates, product images, and more to boost
-              your promotion effectiveness
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-headset"></i>
-            </div>
-            <h3>Dedicated Support</h3>
-            <p>
-              Get help when you need it with our responsive affiliate support
-              team available 7 days a week
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-cookie"></i>
-            </div>
-            <h3>90-Day Cookie</h3>
-            <p>
-              Benefit from our long 90-day cookie duration, giving you more
-              chances to earn from your traffic
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="products" id="products">
-      <div class="container">
-        <div class="section-title">
-          <h2>Top Performing Products</h2>
-          <p>
-            Promote these trending products with high conversion rates and earn
-            generous commissions
-          </p>
-        </div>
-
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="/api/placeholder/400/320"
-                alt="Premium Wireless Earbuds"
-              />
-            </div>
-            <div class="product-info">
-              <div class="product-category">Electronics</div>
-              <h3 class="product-title">Premium Wireless Earbuds</h3>
-              <div class="product-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                <span>(124)</span>
-              </div>
-              <div class="product-price">
-                <span class="current-price">$89.99</span>
-                <span class="old-price">$129.99</span>
-              </div>
-              <div class="commission">Earn $22.50 per sale</div>
-              <a href="#" class="product-button add-to-cart">Promote Now</a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="/api/placeholder/400/320" alt="Smart Fitness Watch" />
-            </div>
-            <div class="product-info">
-              <div class="product-category">Health & Fitness</div>
-              <h3 class="product-title">Smart Fitness Watch</h3>
-              <div class="product-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <span>(89)</span>
-              </div>
-              <div class="product-price">
-                <span class="current-price">$119.99</span>
-                <span class="old-price">$149.99</span>
-              </div>
-              <div class="commission">Earn $30.00 per sale</div>
-              <a href="#" class="product-button add-to-cart">Promote Now</a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="/api/placeholder/400/320"
-                alt="Digital Marketing Course"
-              />
-            </div>
-            <div class="product-info">
-              <div class="product-category">Online Courses</div>
-              <h3 class="product-title">Digital Marketing Masterclass</h3>
-              <div class="product-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <span>(217)</span>
-              </div>
-              <div class="product-price">
-                <span class="current-price">$199.99</span>
-                <span class="old-price">$299.99</span>
-              </div>
-              <div class="commission">Earn $100.00 per sale</div>
-              <a href="#" class="product-button add-to-cart">Promote Now</a>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="/api/placeholder/400/320" alt="Skincare Set" />
-            </div>
-            <div class="product-info">
-              <div class="product-category">Beauty & Personal Care</div>
-              <h3 class="product-title">Premium Skincare Set</h3>
-              <div class="product-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                <span>(217)</span>
-              </div>
-              <div class="product-price">
-                <span class="current-price">$79.99</span>
-                <span class="old-price">$99.99</span>
-              </div>
-              <div class="commission">Earn $20.00 per sale</div>
-              <a href="#" class="product-button add-to-cart">Promote Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer Section -->
     <footer>
-      <div class="container footer-content">
-        <a href="#" class="footer-logo">
-          <img src="../assets/image/logo-brand.png" alt="logo" /> Moodore
-        </a>
-        <p>Follow us on social media for the latest updates and promotions:</p>
-        <div class="social-icons">
-          <a href="https://www.tiktok.com" target="_blank" class="social-icon">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://wa.me/1234567890"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
+      <h3>Trusted by Thousands of Customers</h3>
+      <p>© 2025 AffiliatePro. Semua hak dilindungi.</p>
     </footer>
 
-    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/js/products.js"></script>
   </body>
 </html>
