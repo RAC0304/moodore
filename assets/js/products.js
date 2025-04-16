@@ -91,7 +91,85 @@ const products = [
       "Mikrofon dual untuk panggilan jernih",
     ],
   },
+  {
+    id: 7,
+    category: "fashion",
+    title: "Kaos Polos Katun Premium",
+    image: "/api/placeholder/400/320",
+    description:
+      "Kaos polos berbahan katun premium yang nyaman dipakai sehari-hari.",
+    features: [
+      "Bahan katun 100%",
+      "Tersedia dalam berbagai ukuran",
+      "Nyaman dan tidak panas",
+      "Cocok untuk pria dan wanita",
+      "Pilihan warna beragam",
+    ],
+  },
+  {
+    id: 8,
+    category: "fashion",
+    title: "Celana Jeans Slim Fit",
+    image: "/api/placeholder/400/320",
+    description:
+      "Celana jeans slim fit dengan desain modern untuk gaya kasual Anda.",
+    features: [
+      "Bahan denim berkualitas",
+      "Potongan slim fit",
+      "Tersedia dalam berbagai ukuran",
+      "Cocok untuk acara santai",
+      "Tahan lama dan mudah dicuci",
+    ],
+  },
+  {
+    id: 9,
+    category: "fashion",
+    title: "Sepatu Sneakers Kasual",
+    image: "/api/placeholder/400/320",
+    description:
+      "Sepatu sneakers kasual yang stylish dan nyaman untuk aktivitas sehari-hari.",
+    features: [
+      "Desain modern dan trendi",
+      "Sol karet anti slip",
+      "Bahan breathable",
+      "Ringan dan nyaman dipakai",
+      "Tersedia dalam berbagai ukuran",
+    ],
+  },
+  {
+    id: 10,
+    category: "fashion",
+    title: "Jaket Hoodie Fleece",
+    image: "/api/placeholder/400/320",
+    description:
+      "Jaket hoodie berbahan fleece yang hangat dan nyaman untuk cuaca dingin.",
+    features: [
+      "Bahan fleece berkualitas",
+      "Tersedia kantong depan",
+      "Desain unisex",
+      "Tersedia dalam berbagai warna",
+      "Cocok untuk musim dingin",
+    ],
+  },
+  {
+    id: 11,
+    category: "fashion",
+    title: "Sandal Kulit Casual",
+    image: "/api/placeholder/400/320",
+    description: "Sandal kulit casual yang cocok untuk gaya santai Anda.",
+    features: [
+      "Bahan kulit asli",
+      "Desain ergonomis",
+      "Sol anti slip",
+      "Ringan dan nyaman",
+      "Tersedia dalam berbagai ukuran",
+    ],
+  },
 ];
+
+const itemsPerPage = 9;
+let currentPage = 1;
+let filteredProducts = products; // Initialize filteredProducts with all products
 
 // Format currency to IDR
 function formatRupiah(angka) {
@@ -102,44 +180,40 @@ function formatRupiah(angka) {
   }).format(angka);
 }
 
-// Generate star rating HTML
-function generateStars(rating) {
-  return ""; // Remove star generation logic
-}
-
-// Render products
-function renderProducts(productsToRender) {
+// Render products with pagination
+function renderProducts(productsToRender, page = 1) {
   const container = document.getElementById("productsContainer");
   container.innerHTML = "";
 
-  productsToRender.forEach((product) => {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedProducts = productsToRender.slice(startIndex, endIndex);
+
+  paginatedProducts.forEach((product) => {
     const productCard = document.createElement("div");
     productCard.className = "product-card";
     productCard.setAttribute("data-id", product.id);
 
     productCard.innerHTML = `
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.title}">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">${
-                          product.category.charAt(0).toUpperCase() +
-                          product.category.slice(1)
-                        }</div>
-                        <h3 class="product-title">${product.title}</h3>
-                        <div class="cta-buttons">
-                            <button class="buy-now-btn">Beli Sekarang</button>
-                            <button class="more-info-btn" data-id="${
-                              product.id
-                            }">Info</button>
-                        </div>
-                    </div>
-                `;
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.title}">
+      </div>
+      <div class="product-info">
+        <div class="product-category">${
+          product.category.charAt(0).toUpperCase() + product.category.slice(1)
+        }</div>
+        <h3 class="product-title">${product.title}</h3>
+        <div class="cta-buttons">
+          <button class="buy-now-btn">Beli Sekarang</button>
+          <button class="more-info-btn" data-id="${product.id}">Info</button>
+        </div>
+      </div>
+    `;
 
     container.appendChild(productCard);
   });
 
-  // Add event listeners to the more info buttons
+  // Add event listeners to buttons
   document.querySelectorAll(".more-info-btn").forEach((button) => {
     button.addEventListener("click", function () {
       const productId = this.getAttribute("data-id");
@@ -147,7 +221,6 @@ function renderProducts(productsToRender) {
     });
   });
 
-  // Add event listeners to the buy now buttons
   document.querySelectorAll(".buy-now-btn").forEach((button) => {
     button.addEventListener("click", function () {
       const productCard = this.closest(".product-card");
@@ -155,6 +228,28 @@ function renderProducts(productsToRender) {
       redirectToAffiliate(productId);
     });
   });
+}
+
+// Render pagination buttons
+function renderPagination(totalItems) {
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = "";
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement("button");
+    button.textContent = i;
+    if (i === currentPage) {
+      button.classList.add("active");
+    }
+    button.addEventListener("click", () => {
+      currentPage = i;
+      renderProducts(filteredProducts, currentPage);
+      renderPagination(filteredProducts.length);
+    });
+    paginationContainer.appendChild(button);
+  }
 }
 
 // Open product modal
@@ -216,7 +311,7 @@ function filterProducts() {
   const categoryFilter = document.getElementById("categoryFilter").value;
   const sortFilter = document.getElementById("sortFilter").value;
 
-  let filteredProducts = products.filter((product) => {
+  filteredProducts = products.filter((product) => {
     // Category filter
     if (categoryFilter !== "all" && product.category !== categoryFilter) {
       return false;
@@ -232,25 +327,38 @@ function filterProducts() {
 
   // Sort the filtered products
   switch (sortFilter) {
-    case "price-low":
-      filteredProducts.sort((a, b) => a.currentPrice - b.currentPrice);
+    case "oldmoney":
+      filteredProducts.sort((a, b) => a.title.localeCompare(b.title));
       break;
-    case "price-high":
-      filteredProducts.sort((a, b) => b.currentPrice - a.currentPrice);
+    case "koreanstyle":
+      filteredProducts.sort((a, b) => b.title.localeCompare(a.title));
       break;
-    case "newest":
-      // In a real implementation, you would have a date field to sort by
-      // For this example, we're just reversing the order as a placeholder
+    case "streetwear":
+      filteredProducts.sort((a, b) => a.id - b.id);
+      break;
+    case "minimalist":
+      filteredProducts.sort((a, b) => b.id - a.id);
+      break;
+    case "vintage":
       filteredProducts.reverse();
       break;
-    case "popular":
-    default:
-      filteredProducts.sort((a, b) => b.rating - a.rating);
+    case "genderless":
+      filteredProducts.sort((a, b) => b.features.length - a.features.length);
       break;
+    default:
+      break; // No sorting for "Semua Gaya"
   }
 
-  renderProducts(filteredProducts);
+  renderProducts(filteredProducts, currentPage);
+  renderPagination(filteredProducts.length);
 }
+
+// Initialize the page
+window.onload = function () {
+  filteredProducts = products; // Initialize filteredProducts with all products
+  renderProducts(filteredProducts, currentPage);
+  renderPagination(filteredProducts.length);
+};
 
 // Event listeners for filters
 document
@@ -262,20 +370,3 @@ document
 document
   .getElementById("sortFilter")
   .addEventListener("change", filterProducts);
-
-// Pagination (simplified for demo - in a real implementation this would use actual pagination)
-document.getElementById("pagination").addEventListener("click", function (e) {
-  if (e.target.tagName === "BUTTON") {
-    document.querySelectorAll("#pagination button").forEach((btn) => {
-      btn.classList.remove("active");
-    });
-    e.target.classList.add("active");
-    // In a real implementation, you would load the appropriate page of products here
-  }
-});
-
-// Initialize the page
-window.onload = function () {
-  renderProducts(products);
-  document.querySelector("#pagination button").classList.add("active");
-};

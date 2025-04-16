@@ -423,13 +423,13 @@ header p {
 footer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  padding: 20px 0 15px;
+  padding: 5px;
   text-align: center;
 }
 
 .footer-content {
   max-width: 1200px;
-  margin: 7px auto;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
