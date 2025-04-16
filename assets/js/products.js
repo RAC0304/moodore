@@ -6,11 +6,6 @@ const products = [
     title:
       "Smartphone Premium Plus X20 dengan Kamera 108MP dan Baterai Tahan Lama",
     image: "/api/placeholder/400/320",
-    rating: 4.8,
-    ratingCount: 456,
-    currentPrice: 4599000,
-    originalPrice: 5999000,
-    discount: "23%",
     description:
       "Smartphone terbaru dengan teknologi kamera canggih, baterai tahan lama, dan performa super cepat untuk memenuhi kebutuhan digital Anda sehari-hari.",
     features: [
@@ -26,11 +21,6 @@ const products = [
     category: "electronics",
     title: "Smartwatch Pro Health Monitor dengan Fitur Canggih",
     image: "/api/placeholder/400/320",
-    rating: 4.6,
-    ratingCount: 289,
-    currentPrice: 1299000,
-    originalPrice: 1799000,
-    discount: "28%",
     description:
       "Smartwatch canggih yang dapat memantau kesehatan Anda, dilengkapi dengan berbagai fitur olahraga dan notifikasi pintar.",
     features: [
@@ -46,11 +36,6 @@ const products = [
     category: "health",
     title: "Vitamin C 1000mg dengan Zinc Daya Tahan Tubuh",
     image: "",
-    rating: 4.9,
-    ratingCount: 712,
-    currentPrice: 159000,
-    originalPrice: 199000,
-    discount: "20%",
     description:
       "Suplemen vitamin C berkualitas tinggi dengan tambahan Zinc untuk meningkatkan daya tahan tubuh dan kesehatan Anda.",
     features: [
@@ -66,11 +51,6 @@ const products = [
     category: "fashion",
     title: "Tas Ransel Anti Air dengan Port USB",
     image: "/api/placeholder/400/320",
-    rating: 4.7,
-    ratingCount: 345,
-    currentPrice: 299000,
-    originalPrice: 399000,
-    discount: "25%",
     description:
       "Tas ransel modern dengan material anti air, dilengkapi port USB dan kompartemen laptop yang aman.",
     features: [
@@ -86,11 +66,6 @@ const products = [
     category: "home",
     title: "Air Fryer Digital 5.5L Hemat Minyak",
     image: "../assets/image/air-fryer.png",
-    rating: 4.8,
-    ratingCount: 523,
-    currentPrice: 899000,
-    originalPrice: 1299000,
-    discount: "31%",
     description:
       "Air fryer digital dengan kapasitas besar untuk memasak lebih sehat dengan sedikit atau tanpa minyak sama sekali.",
     features: [
@@ -106,11 +81,6 @@ const products = [
     category: "electronics",
     title: "Earbuds Nirkabel dengan Noise Cancelling",
     image: "/api/placeholder/400/320",
-    rating: 4.5,
-    ratingCount: 278,
-    currentPrice: 849000,
-    originalPrice: 1099000,
-    discount: "23%",
     description:
       "Earbuds wireless dengan fitur active noise cancelling untuk pengalaman mendengarkan musik yang lebih imersif.",
     features: [
@@ -134,24 +104,7 @@ function formatRupiah(angka) {
 
 // Generate star rating HTML
 function generateStars(rating) {
-  let stars = "";
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5;
-
-  for (let i = 0; i < fullStars; i++) {
-    stars += "★";
-  }
-
-  if (halfStar) {
-    stars += "★";
-  }
-
-  const emptyStars = 5 - stars.length;
-  for (let i = 0; i < emptyStars; i++) {
-    stars += "☆";
-  }
-
-  return stars;
+  return ""; // Remove star generation logic
 }
 
 // Render products
@@ -167,11 +120,6 @@ function renderProducts(productsToRender) {
     productCard.innerHTML = `
                     <div class="product-image">
                         <img src="${product.image}" alt="${product.title}">
-                        ${
-                          product.discount
-                            ? `<span class="discount-badge">-${product.discount}</span>`
-                            : ""
-                        }
                     </div>
                     <div class="product-info">
                         <div class="product-category">${
@@ -179,22 +127,6 @@ function renderProducts(productsToRender) {
                           product.category.slice(1)
                         }</div>
                         <h3 class="product-title">${product.title}</h3>
-                        <div class="product-rating">
-                            <div class="stars">${generateStars(
-                              product.rating
-                            )}</div>
-                            <div class="rating-count">(${
-                              product.ratingCount
-                            })</div>
-                        </div>
-                        <div class="product-price">
-                            <div class="current-price">${formatRupiah(
-                              product.currentPrice
-                            )}</div>
-                            <div class="original-price">${formatRupiah(
-                              product.originalPrice
-                            )}</div>
-                        </div>
                         <div class="cta-buttons">
                             <button class="buy-now-btn">Beli Sekarang</button>
                             <button class="more-info-btn" data-id="${
@@ -244,37 +176,12 @@ function openProductModal(productId) {
                 </div>
                 <div class="product-detail-info">
                     <h2 class="product-detail-title">${product.title}</h2>
-                    <div class="product-rating">
-                        <div class="stars">${generateStars(
-                          product.rating
-                        )}</div>
-                        <div class="rating-count">(${
-                          product.ratingCount
-                        } ulasan)</div>
-                    </div>
-                    <p class="product-detail-description">${
-                      product.description
-                    }</p>
+                    <p class="product-detail-description">${product.description}</p>
                     <div class="product-features">
                         <h3>Fitur Utama</h3>
                         <ul>${featuresHTML}</ul>
                     </div>
-                    <div class="buy-section">
-                        <div class="product-price">
-                            <div class="current-price">${formatRupiah(
-                              product.currentPrice
-                            )}</div>
-                            <div class="original-price">${formatRupiah(
-                              product.originalPrice
-                            )}</div>
-                            <div class="discount-badge">-${
-                              product.discount
-                            }</div>
-                        </div>
-                        <button class="buy-now-btn" onclick="redirectToAffiliate(${
-                          product.id
-                        })">Beli Sekarang</button>
-                    </div>
+                    <button class="buy-now-btn" onclick="redirectToAffiliate(${product.id})">Beli Sekarang</button>
                 </div>
             `;
 
