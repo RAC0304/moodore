@@ -24,11 +24,13 @@ body {
 
 header {
   background-color: var(--white);
+  background-color: var(--white);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
   z-index: 1000;
   top: 0;
+  left: 0; /* Ensure it spans the full width */
 }
 
 .container {
@@ -41,7 +43,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px; /* Ensure proper spacing */
+  padding: 15px 20px;
 }
 
 .logo {
@@ -62,6 +64,7 @@ header {
 .nav-menu {
   display: flex;
   list-style: none;
+  margin: 0; /* Remove default margin */
 }
 
 .nav-menu li {
@@ -73,8 +76,8 @@ header {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
-  position: relative; /* Tambahkan ini untuk pseudo-element */
-  padding-bottom: 5px; /* Tambahkan space untuk garis bawah */
+  position: relative;
+  padding-bottom: 5px;
 }
 
 .nav-menu a::after {
@@ -678,8 +681,6 @@ footer a:hover {
 
   .hamburger {
     display: block;
-    cursor: pointer;
-    z-index: 1100;
   }
 
   .hero h1 {
@@ -724,12 +725,12 @@ footer a:hover {
 }
 
 .search-input {
-  padding: 8px 15px;
   border: 1px solid #ddd;
   border-radius: 20px;
   font-size: 0.9rem;
   width: 200px;
   transition: width 0.3s;
+  padding: 8px 15px;
 }
 
 .search-input:focus {
