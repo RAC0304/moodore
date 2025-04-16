@@ -255,6 +255,7 @@ header p {
 footer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  padding: 60px 0 30px;
   text-align: center;
 }
 
