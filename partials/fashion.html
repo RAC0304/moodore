@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="../assets/image/logo-brand.png"
+      type="image/x-icon"
+    />
+    <title>Moodore - Fashion Showcase</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/fashion.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img src="../assets/image/logo-brand.png" alt="logo-brand" />
+          Fashion<span>Moodore</span>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#styles">Styles</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Discover Your Unique Style</h1>
+      <p>
+        Explore the latest fashion trends and find products that match your
+        personal style. From classic elegance to modern streetwear, we've got
+        you covered.
+      </p>
+    </section>
+
+    <div class="styles-container" id="styles">
+      <h2 class="section-title">Popular Style Collections</h2>
+
+      <div class="search-filter-container">
+        <div class="search-box">
+          <svg
+            class="search-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search for styles..."
+            id="styleSearch"
+          />
+        </div>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">
+            All Styles
+          </button>
+          <button class="filter-btn" data-filter="old-money">Old Money</button>
+          <button class="filter-btn" data-filter="korean">Korean</button>
+          <button class="filter-btn" data-filter="streetwear">
+            Streetwear
+          </button>
+          <button class="filter-btn" data-filter="minimalist">
+            Minimalist
+          </button>
+          <button class="filter-btn" data-filter="vintage">Vintage</button>
+          <button class="filter-btn" data-filter="genderless">
+            Genderless
+          </button>
+        </div>
+
+        <!-- <div class="price-filter">
+          <label for="price-range">Price Range:</label>
+          <select id="price-range">
+            <option value="all">All Prices</option>
+            <option value="under50">Under $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="over100">Over $100</option>
+          </select>
+        </div> -->
+      </div>
+
+      <div class="styles-grid" id="stylesGrid">
+        <div class="style-card" data-style="old-money">
+          <img
+            src="../assets/image/Mens Old Money Summer Outfit Idea Fashion.jpg"
+            alt="Old Money Style"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Old Money Style</h3>
+            <p>
+              Timeless elegance with a focus on quality and subtle luxury. Think
+              Ralph Lauren, tailored pieces, and understated sophistication.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+
+        <div class="style-card" data-style="korean">
+          <img
+            src="../assets/image/Men's Outfit Aesthetic Collection _ FashionGlowUp.jpg"
+            alt="Korean Style"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Korean Style</h3>
+            <p>
+              Clean silhouettes with playful details, oversized fits, and a
+              perfect blend of casual and formal elements.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+
+        <div class="style-card" data-style="streetwear">
+          <img
+            src="../assets/image/ゆるいシルエットは明るいカラーで好感度を！.jpg"
+            alt="Streetwear"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Streetwear</h3>
+            <p>
+              Urban-inspired casual wear with bold graphics, comfort, and
+              statement pieces that reflect contemporary culture.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+
+        <div class="style-card" data-style="minimalist">
+          <img
+            src="../assets/image/download.jpg"
+            alt="Minimalist"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Minimalist</h3>
+            <p>
+              Clean lines, neutral colors, and simplified silhouettes that focus
+              on functionality and timeless appeal.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+
+        <div class="style-card" data-style="vintage">
+          <img
+            src="../assets/image/How To Dress Like the 1930s-40s in Today’s Age.jpg"
+            alt="Vintage Revival"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Vintage Revival</h3>
+            <p>
+              Modern interpretations of classic styles from past decades,
+              featuring unique patterns and retro-inspired details.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+
+        <div class="style-card" data-style="genderless">
+          <img
+            src="../assets/image/20250417_0943_Fashion Tanpa Gender_simple_compose_01js0szhe3f4dbfzs74xnw3q95.png"
+            alt="Genderless"
+            class="style-image"
+          />
+          <div class="style-info">
+            <h3>Genderless</h3>
+            <p>
+              Breaking traditional fashion boundaries with fluid designs
+              suitable for everyone, focusing on comfort and self-expression.
+            </p>
+            <button class="info-btn">View Products</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="styleModal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <div class="modal-header">
+          <img
+            src="/api/placeholder/200/200"
+            alt="Style Image"
+            id="modalImage"
+          />
+          <div class="modal-header-text">
+            <h2 id="modalTitle">Style Title</h2>
+            <p id="modalDescription">Style description goes here.</p>
+          </div>
+        </div>
+        <div class="product-details">
+          <h3>Featured Products</h3>
+          <input
+            type="text"
+            class="product-search"
+            id="productSearch"
+            placeholder="Search products..."
+          />
+          <div class="products-showcase" id="productsShowcase">
+            <!-- Products will be added dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container footer-content">
+        <a href="#" class="footer-logo">
+          <img src="../assets/image/logo-brand.png" alt="logo" /> Moodore
+        </a>
+        <p>Follow us on social media for the latest updates and promotions:</p>
+        <div class="social-icons">
+          <a href="https://www.tiktok.com" target="_blank" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://wa.me/1234567890"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Moodore. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/fashion.js"></script>
+  </body>
+</html>
