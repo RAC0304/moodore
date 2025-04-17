@@ -271,6 +271,38 @@ const aboutBtn = document.getElementById("about-btn");
 const aboutModal = document.getElementById("aboutModal");
 const closeAboutModal = aboutModal.querySelector(".close-modal");
 
+// Mobile Menu Functionality
+const mobileMenuToggle = document.getElementById("mobile-menu");
+const nav = document.querySelector("nav");
+
+mobileMenuToggle.addEventListener("click", function () {
+  this.classList.toggle("active");
+  nav.classList.toggle("active");
+});
+
+// Close mobile menu when clicking on a nav link
+document.querySelectorAll("nav ul li a").forEach((link) => {
+  link.addEventListener("click", function () {
+    mobileMenuToggle.classList.remove("active");
+    nav.classList.remove("active");
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", function (e) {
+  const isClickInsideNav = nav.contains(e.target);
+  const isClickOnToggle = mobileMenuToggle.contains(e.target);
+
+  if (
+    !isClickInsideNav &&
+    !isClickOnToggle &&
+    nav.classList.contains("active")
+  ) {
+    mobileMenuToggle.classList.remove("active");
+    nav.classList.remove("active");
+  }
+});
+
 // Event Listeners
 styleSearch.addEventListener("input", filterStyles);
 closeModal.addEventListener("click", () =>
