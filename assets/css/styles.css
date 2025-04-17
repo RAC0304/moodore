@@ -287,6 +287,7 @@ header {
   background-color: var(--secondary);
   color: var(--text-dark);
   border-radius: 5px;
+  border: 1px solid var(--primary);
 }
 
 .testimonials {
