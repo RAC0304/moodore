@@ -285,6 +285,7 @@ header {
 
 .product-button:hover {
   background-color: var(--secondary);
+  color: var(--text-dark);
 }
 
 .testimonials {
