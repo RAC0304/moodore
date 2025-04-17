@@ -266,6 +266,11 @@ const styleSearch = document.getElementById("styleSearch");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const productSearch = document.getElementById("productSearch");
 
+// About Modal Elements
+const aboutBtn = document.getElementById("about-btn");
+const aboutModal = document.getElementById("aboutModal");
+const closeAboutModal = aboutModal.querySelector(".close-modal");
+
 // Event Listeners
 styleSearch.addEventListener("input", filterStyles);
 closeModal.addEventListener("click", () =>
@@ -297,6 +302,35 @@ filterButtons.forEach((button) => {
     this.classList.add("active");
     filterStyles();
   });
+});
+
+// Event Listeners for About Modal
+aboutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  aboutModal.classList.add("active");
+});
+
+closeAboutModal.addEventListener("click", function () {
+  aboutModal.classList.remove("active");
+});
+
+// Close about modal when clicking outside of content
+window.addEventListener("click", function (e) {
+  if (e.target === aboutModal) {
+    aboutModal.classList.remove("active");
+  }
+});
+
+// Add about modal to Escape key handler
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    if (styleModal.classList.contains("active")) {
+      styleModal.classList.remove("active");
+    }
+    if (aboutModal.classList.contains("active")) {
+      aboutModal.classList.remove("active");
+    }
+  }
 });
 
 // Functions
