@@ -98,7 +98,13 @@
           </a>
         </div>
         <div class="copyright">
-          <p>&copy; 2023 Moodore. All rights reserved.</p>
+          <p>
+            &copy; <span id="currentYear"></span> Moodore. All rights reserved.
+          </p>
+          <script>
+            document.getElementById("currentYear").textContent =
+              new Date().getFullYear();
+          </script>
         </div>
       </div>
     </footer>

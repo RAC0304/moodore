@@ -236,6 +236,41 @@ header {
   margin-bottom: 10px;
 }
 
+.product-rating {
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.current-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.old-price {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
+.commission {
+  background-color: #e9f5ff;
+  color: var(--primary);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
 .product-button {
   display: block;
   background-color: var(--primary);
@@ -246,7 +281,6 @@ header {
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s;
-  margin-top: 15px;
 }
 
 .product-button:hover {
